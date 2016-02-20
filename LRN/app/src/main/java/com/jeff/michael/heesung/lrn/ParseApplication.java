@@ -21,5 +21,6 @@ public class ParseApplication extends Application {
         Parse.initialize(this);
         ParseUser.enableAutomaticUser();
 
+
     }
 }
