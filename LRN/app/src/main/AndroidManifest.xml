@@ -83,7 +83,7 @@
                 android:value="com.jeff.michael.heesung.lrn.MainActivity" />
         </activity>
         <activity
-            android:name=".GraphView"
+            android:name=".GraphActivity"
             android:label="@string/title_activity_graph_view"
             android:theme="@style/AppTheme.NoActionBar"/>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for

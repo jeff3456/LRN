@@ -27,7 +27,7 @@
         completions."
     </string>
     <string name="title_activity_sign_up">Sign Up</string>
-    <string name="title_activity_graph_view">GraphView</string>
+    <string name="title_activity_graph_view">GraphActivity</string>
     <string name="google_app_id">170886441435</string>
     <string name="title_activity_maps">Map</string>
 
