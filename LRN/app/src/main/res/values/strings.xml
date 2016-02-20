@@ -3,5 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="parse_app_id">0RJ0atHb0FW0VoyPgXlgassPWPgQqYRw1T5052Zg</string>
     <string name="parse_client_key">iLaWpOMZwgVi2Uya9XhKzQRTtfBSry8WuzVj4P6b</string>
+    <string name="google_app_id">170886441435</string>
     <string name="title_activity_maps">Map</string>
 </resources>
