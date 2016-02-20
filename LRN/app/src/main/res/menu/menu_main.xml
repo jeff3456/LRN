@@ -4,7 +4,19 @@
     tools:context="com.jeff.michael.heesung.lrn.MainActivity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="50"
         android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/edit_profile"
+        android:orderInCategory="20"
+        android:title="@string/edit_profile"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/log_in"
+        android:orderInCategory="10"
+        android:title="@string/log_in"
         app:showAsAction="never" />
 </menu>
