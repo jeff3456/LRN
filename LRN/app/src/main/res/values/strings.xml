@@ -5,4 +5,5 @@
     <string name="parse_client_key">iLaWpOMZwgVi2Uya9XhKzQRTtfBSry8WuzVj4P6b</string>
     <string name="google_app_id">170886441435</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_skills_classes_stats">SkillsClassesStatsActivity</string>
 </resources>

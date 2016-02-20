@@ -21,6 +21,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -76,6 +83,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        }
 //        mMap.addMarker(new MarkerOptions().position(location).title("Current Location"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+
+        String user = "";
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, ParseException e) {
+
+                if (e == null) {
+                    // The query was successful.
+                    // Go through Users list and make markers on the map
+
+                    for(ParseUser user : objects) {
+                        ParseGeoPoint geoPoint = user.getParseGeoPoint("lastKnownLocation");
+                        LatLng location = new LatLng(geoPoint.getLatitude(), geoPoint.getLongitude());
+                        String markerMessage = Utility.JsonArrayToString(user.getJSONArray("skillsWant"))
+                                + Utility.JsonArrayToString(user.getJSONArray("skillsHave"));
+
+
+                        mMap.addMarker(new MarkerOptions().position(location).title("Current Location"));
+                    }
+
+                } else {
+                    // Something went wrong.
+                }
+            }
+        });
+
     }
 
     @Override
@@ -127,13 +160,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
 
@@ -143,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng location;
         if(mCurrentLoc == null){
             location = new LatLng(40.7127, -74.0059);
-            Log.e("MAPS","MCURRENTLOC IS NULL");
+            Log.e("MAPS", "MCURRENTLOC IS NULL");
         } else {
             location = new LatLng(mCurrentLoc.getLatitude(), mCurrentLoc.getLongitude());
         }
@@ -163,4 +189,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
+
+
 }
